@@ -1,2 +1,2 @@
-Given /^I am an anonymous user$/ do
+Given /^an anonymous user$/ do
 end
