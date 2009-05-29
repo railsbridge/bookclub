@@ -90,26 +90,29 @@ When /^I attach the file at "([^\"]*)" to "([^\"]*)"$/ do |path, field|
   attach_file(field, path)
 end
 
-Then /^I should see "([^\"]*)"$/ do |text|
-  response.should contain(text)
+Then /^I should see "(.*)"$/ do |text|
+  # response.body.should =~ /#{text}/m
+  assert_match /#{text}/m, @response.body
 end
 
-Then /^I should not see "([^\"]*)"$/ do |text|
-  response.should_not contain(text)
+Then /^I should not see "(.*)"$/ do |text|
+  # response.body.should_not =~ /#{text}/m
+  assert_no_match /#{text}/m, @response.body
+end
+
+Then /^the "(.*)" checkbox should be checked$/ do |label|
+  # field_labeled(label).should be_checked
+  assert field_labeled(label).checked?
 end
 
 Then /^the "([^\"]*)" field should contain "([^\"]*)"$/ do |field, value|
-  field_labeled(field).value.should =~ /#{value}/
+  assert field_labeled(field).value =~ /#{value}/
 end
 
 Then /^the "([^\"]*)" field should not contain "([^\"]*)"$/ do |field, value|
-  field_labeled(field).value.should_not =~ /#{value}/
+  assert !(field_labeled(field).value =~ /#{value}/)
 end
     
-Then /^the "([^\"]*)" checkbox should be checked$/ do |label|
-  field_labeled(label).should be_checked
-end
-
 Then /^I should be on (.+)$/ do |page_name|
-  URI.parse(current_url).path.should == path_to(page_name)
+  assert URI.parse(current_url).path == path_to(page_name)
 end

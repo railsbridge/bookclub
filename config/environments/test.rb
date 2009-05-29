@@ -30,6 +30,7 @@ config.action_mailer.delivery_method = :test
 config.gem "cucumber", :lib => false, :version => ">= 0.3.7"
 config.gem 'bmabey-email_spec', :lib => 'email_spec'
 config.gem 'webrat', :lib => false, :version => ">= 0.4.4"
-config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
+config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :version => '>= 1.2.1'
+config.gem "thoughtbot-shoulda", :lib => "shoulda", :version => '>= 2.10.1'
 
 require "pp"
