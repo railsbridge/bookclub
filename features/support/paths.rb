@@ -10,6 +10,8 @@ module NavigationHelpers
     
     when /the homepage/
       '/'
+		when /the add books page/
+			new_book_path		
     
     # Add more mappings here.
     # Here is a more fancy example:
