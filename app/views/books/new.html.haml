@@ -1,0 +1,7 @@
+- form_for :book, :url => books_path do |f|
+
+  %label{:for => "book_title" } Title:
+  = f.text_field :title
+  %label{:for => "book_author" } Author:
+  = f.text_field :author
+  = submit_tag "Add Book" 
