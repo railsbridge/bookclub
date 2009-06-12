@@ -26,7 +26,7 @@
 </p>
 <p>
   <strong>Added by:</strong>
-  <%=h @book.user_id %>
+  <%=h @book.user.login %>
 </p>
 <p>
   <%= link_to "Edit", edit_book_path(@book) %> |

@@ -12,16 +12,21 @@
   </tr>
   <% for book in @books %>
     <tr>
-      <td><%=h book.user_id %></td>
+      <td><%=h book.user.login %></td>
       <td><%=h book.title %></td>
       <td><%=h book.author %></td>
       <td><%=h book.published_year %></td>
       <td><%=h book.genre %></td>
       <td><%=h book.isbn %></td>
       <td><%=h book.description %></td>
+
       <td><%= link_to "Show", book %></td>
+        <% if @current_user%>
+          <% if @current_user.id == book.user.id %>
       <td><%= link_to "Edit", edit_book_path(book) %></td>
       <td><%= link_to "Destroy", book, :confirm => 'Are you sure?', :method => :delete %></td>
+            <% end %>
+           <% end %>
     </tr>
   <% end %>
 </table>

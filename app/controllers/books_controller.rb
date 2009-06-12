@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+
+    before_filter :login_required, :only => ["new", "create"]
+
   def index
     @books = Book.all
   end
@@ -17,7 +20,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    params[:user_id] = current_user.id
+    @book = @current_user.books.build params[:book]
     @book = Book.new(params[:book])
     respond_to do |wants|
       if @book.save

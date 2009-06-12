@@ -24,8 +24,18 @@
             <%#= link_to "Signup", signup_users_path %>
         <%# end %>
       </div>
-
-      <br /><br />
+      <br />
+        <div class='login_logout'>
+            <% if @current_user %>
+             Logged in as:
+             <%= @current_user.login %>
+             <em><%= link_to "(Logout)", session_path, :method => :delete %></em>
+             <% else %>
+              <em>Not logged in.</em>
+              <%= link_to 'Login', new_session_path %>
+              <% end %>
+        </div>
+        <br /><br />
       <%= yield %>
       <br /><br />
 
