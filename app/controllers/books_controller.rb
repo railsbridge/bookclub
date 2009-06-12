@@ -1,85 +1,68 @@
 class BooksController < ApplicationController
-  # GET /books
-  # GET /books.xml
   def index
     @books = Book.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @books }
-    end
   end
 
-  # GET /books/1
-  # GET /books/1.xml
   def show
     @book = Book.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @book }
-    end
   end
 
-  # GET /books/new
-  # GET /books/new.xml
   def new
     @book = Book.new
+    respond_to do |wants|
+      wants.html
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @book }
+    end
+
+  end
+
+  def create
+    params[:user_id] = current_user.id
+    @book = Book.new(params[:book])
+    respond_to do |wants|
+      if @book.save
+        wants.html do
+          flash[:notice] = "Successfully created book."
+          redirect_to @book
+        end
+
+      else
+        wants.html { render :action => 'new' }
+
+      end
     end
   end
 
-  # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
-  end
+    respond_to do |wants|
+      wants.html
 
-  # POST /books
-  # POST /books.xml
-  def create
-    @book = Book.new(params[:book])
-
-    respond_to do |format|
-      if @book.save
-        flash[:notice] = 'Book was successfully created.'
-        format.html { redirect_to(@book) }
-        format.xml  { render :xml => @book, :status => :created, :location => @book }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
-      end
     end
+
   end
 
-  # PUT /books/1
-  # PUT /books/1.xml
   def update
     @book = Book.find(params[:id])
-
-    respond_to do |format|
+    respond_to do |wants|
       if @book.update_attributes(params[:book])
-        flash[:notice] = 'Book was successfully updated.'
-        format.html { redirect_to(@book) }
-        format.xml  { head :ok }
+        wants.html do
+          flash[:notice] = "Successfully updated book."
+          redirect_to @book
+        end
+
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
+        wants.html { render :action => 'edit' }
+
       end
     end
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.xml
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(books_url) }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = "Successfully removed book."
+    redirect_to books_url
   end
 end
+

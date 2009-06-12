@@ -1,28 +1,29 @@
+<h2> User </h2>
+
 <p>
-  <b>Login:</b>
+  <strong>Login:</strong>
   <%=h @user.login %>
 </p>
-
 <p>
-  <b>Password:</b>
+  <strong>Password:</strong>
   <%=h @user.password %>
 </p>
-
 <p>
-  <b>Name:</b>
+  <strong>Name:</strong>
   <%=h @user.name %>
 </p>
-
 <p>
-  <b>Email:</b>
+  <strong>Email:</strong>
   <%=h @user.email %>
 </p>
-
 <p>
-  <b>Location:</b>
+  <strong>Location:</strong>
   <%=h @user.location %>
 </p>
 
+<p>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

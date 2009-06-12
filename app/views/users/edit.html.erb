@@ -1,32 +1,9 @@
-<h1>Editing user</h1>
+<h2> Edit User: <%= @user.login></h2>
 
-<% form_for(@user) do |f| %>
-  <%= f.error_messages %>
+<%= render :partial => 'form' %>
 
-  <p>
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<p>
+  <%= link_to "Show", @user %> |
+  <%= link_to "View All", users_path %>
+</p>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

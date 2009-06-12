@@ -1,45 +1,54 @@
 require 'test_helper'
 
 class BooksControllerTest < ActionController::TestCase
-  test "should get index" do
+  def test_index
     get :index
-    assert_response :success
-    assert_not_nil assigns(:books)
+    assert_template 'index'
   end
-
-  test "should get new" do
+  
+  def test_show
+    get :show, :id => Book.first
+    assert_template 'show'
+  end
+  
+  def test_new
     get :new
-    assert_response :success
+    assert_template 'new'
   end
-
-  test "should create book" do
-    assert_difference('Book.count') do
-      post :create, :book => { }
-    end
-
-    assert_redirected_to book_path(assigns(:book))
+  
+  def test_create_invalid
+    Book.any_instance.stubs(:valid?).returns(false)
+    post :create
+    assert_template 'new'
   end
-
-  test "should show book" do
-    get :show, :id => books(:one).to_param
-    assert_response :success
+  
+  def test_create_valid
+    Book.any_instance.stubs(:valid?).returns(true)
+    post :create
+    assert_redirected_to book_url(assigns(:book))
   end
-
-  test "should get edit" do
-    get :edit, :id => books(:one).to_param
-    assert_response :success
+  
+  def test_edit
+    get :edit, :id => Book.first
+    assert_template 'edit'
   end
-
-  test "should update book" do
-    put :update, :id => books(:one).to_param, :book => { }
-    assert_redirected_to book_path(assigns(:book))
+  
+  def test_update_invalid
+    Book.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => Book.first
+    assert_template 'edit'
   end
-
-  test "should destroy book" do
-    assert_difference('Book.count', -1) do
-      delete :destroy, :id => books(:one).to_param
-    end
-
-    assert_redirected_to books_path
+  
+  def test_update_valid
+    Book.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => Book.first
+    assert_redirected_to book_url(assigns(:book))
+  end
+  
+  def test_destroy
+    book = Book.first
+    delete :destroy, :id => book
+    assert_redirected_to books_url
+    assert !Book.exists?(book.id)
   end
 end

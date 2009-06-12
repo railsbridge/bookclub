@@ -1,38 +1,36 @@
-<p>
-  <b>User:</b>
-  <%=h @book.user %>
-</p>
+<h2> Book </h2>
 
 <p>
-  <b>Title:</b>
+  <strong>Title:</strong>
   <%=h @book.title %>
 </p>
-
 <p>
-  <b>Author:</b>
+  <strong>Author:</strong>
   <%=h @book.author %>
 </p>
-
 <p>
-  <b>Published year:</b>
+  <strong>Published Year:</strong>
   <%=h @book.published_year %>
 </p>
-
 <p>
-  <b>Genre:</b>
+  <strong>Genre:</strong>
   <%=h @book.genre %>
 </p>
-
 <p>
-  <b>Isbn:</b>
+  <strong>Isbn:</strong>
   <%=h @book.isbn %>
 </p>
-
 <p>
-  <b>Description:</b>
+  <strong>Description:</strong>
   <%=h @book.description %>
 </p>
+<p>
+  <strong>Added by:</strong>
+  <%=h @book.user_id %>
+</p>
+<p>
+  <%= link_to "Edit", edit_book_path(@book) %> |
+  <%= link_to "Destroy", @book, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", books_path %>
+</p>
 
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
