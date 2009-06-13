@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-    before_filter :login_required, :only => ["new", "create"]
+    before_filter :login_required, :only => ["new", "create", "edit", "update"]
 
   def index
     @books = Book.all
@@ -12,16 +12,17 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    respond_to do |wants|
-      wants.html
+    #respond_to do |wants|
+    #  wants.html
 
-    end
+    #end
 
   end
 
   def create
-    @book = @current_user.books.build params[:book]
+
     @book = Book.new(params[:book])
+    @book = @current_user.books.build params[:book]
     respond_to do |wants|
       if @book.save
         wants.html do

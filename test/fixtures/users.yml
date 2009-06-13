@@ -1,15 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  login: MyString
-  password: MyString
-  name: MyString
-  email: MyString
-  location: MyString
+nick:
+  login: nick
+  password: ni123
+  name: Nickolai Nikky
+  email: nik@tester.com
+  location: Siberia
 
-two:
-  login: MyString
-  password: MyString
-  name: MyString
-  email: MyString
-  location: MyString
+john:
+  login: john
+  password: 3j4o5h6n
+  name: John Doe
+  email: john@doe.me
+  location: Florida
+

@@ -16,7 +16,7 @@ class ActiveSupport::TestCase
   # don't care one way or the other, switching from MyISAM to InnoDB tables
   # is recommended.
   #
-  # The only drawback to using transactional fixtures is when you actually 
+  # The only drawback to using transactional fixtures is when you actually
   # need to test transactions.  Since your test is bracketed by a transaction,
   # any transactions started in your code will be automatically rolled back.
   self.use_transactional_fixtures = true
@@ -35,4 +35,16 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def get_with_user(action, parameters = nil, session = nil, flash = nil)
+    get action, parameters, :user_id => users(:nick).id
+  end
+
+  def post_with_user(action, parameters = nil, session = nil, flash = nil)
+    post action, parameters, :user_id => users(:nick).id
+  end
+
+   def put_with_user(action, parameters = nil, session = nil, flash = nil)
+    put action, parameters, :user_id => users(:nick).id
+  end
 end
+

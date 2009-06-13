@@ -24,9 +24,9 @@
   <strong>Description:</strong>
   <%=h @book.description %>
 </p>
-<p>
+<p class="added_by">
   <strong>Added by:</strong>
-  <%=h @book.user.login %>
+  <span><%=h @book.user.login %></span>
 </p>
 <p>
   <%= link_to "Edit", edit_book_path(@book) %> |

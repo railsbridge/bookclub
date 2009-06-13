@@ -1,19 +1,20 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  user: 
-  title: MyString
-  author: MyString
-  published_year: 
-  genre: MyString
-  isbn: MyString
-  description: MyText
+  user: nick
+  title: How to read
+  author: Kventin Smith
+  published_year: 1981
+  genre: Education
+  isbn: 1234567
+  description: Great book about books
 
 two:
-  user: 
-  title: MyString
-  author: MyString
-  published_year: 
-  genre: MyString
-  isbn: MyString
-  description: MyText
+  user: nick
+  title: My first bestseller
+  author: Marta Write
+  published_year: 2002
+  genre: Sci-fi
+  isbn: 876543
+  description: First book of young sci-fi writer
+
