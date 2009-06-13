@@ -78,5 +78,17 @@ class BooksControllerTest < ActionController::TestCase
    assert_response :redirect
    assert_redirected_to new_session_path
   end
+
+  test 'should store user with book' do
+    post_with_user :create, :book => {
+        :title => 'How to read',
+        :author => 'Kventin Smith',
+        :published_year => '1981',
+        :genre => 'Education',
+        :isbn => '123456788',
+        :description => 'Great book about books'
+    }
+    assert_equal users(:nick), assigns(:book).user
+  end
 end
 

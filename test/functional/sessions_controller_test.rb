@@ -39,5 +39,8 @@ class SessionsControllerTest < ActionController::TestCase
     assert_nil assigns(:current_user)
     assert_nil session[:user_id]
   end
+
+
+
 end
 

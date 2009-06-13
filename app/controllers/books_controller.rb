@@ -12,10 +12,10 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    #respond_to do |wants|
-    #  wants.html
+    respond_to do |wants|
+      wants.html
 
-    #end
+    end
 
   end
 
@@ -50,6 +50,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     respond_to do |wants|
       if @book.update_attributes(params[:book])
+
         wants.html do
           flash[:notice] = "Successfully updated book."
           redirect_to @book
