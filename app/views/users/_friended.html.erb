@@ -1,0 +1,14 @@
+<% if logged_in? && @current_user.id == @user.id %>
+<strong>I am a friend of</strong>
+<% else %>
+<strong><%= @user.name %> a friend of</strong>
+<% end %>
+
+<ul>
+    <% for user in @user.inverse_friends %>
+      <li>
+        <%=h user.name %>
+       </li>
+    <% end %>
+</ul>
+

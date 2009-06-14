@@ -10,7 +10,11 @@
       <td><%=h user.name %></td>
       <td><%=h user.location %></td>
       <td><%= link_to "Show", user %></td>
-         <% if logged_in? %>
+        <% if logged_in? %>
+        <% if !@current_user.friends.include?(user)%>
+      <td><%= link_to 'Add friend', friendships_path(:friend_id => user), :method => :post %></td>
+
+        <% end %>
            <% if @current_user.id == user.id %>
       <td><%= link_to "Edit", edit_user_path(user) %></td>
       <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>

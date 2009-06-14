@@ -27,14 +27,19 @@
 <p class="added_by">
   <strong>Added by:</strong>
   <span><%= link_to @book.user.login, user_path(@book.user_id) %></span>
+    <% if logged_in? %>
+    <% if @book.user != @current_user && !@current_user.friends.include?(@book.user)%>
+  <%= link_to 'Add friend', friendships_path(:friend_id => @book.user_id), :method => :post %>
+    <% end %>
+
 </p>
 <p>
-    <% if logged_in? %>
+
         <% if @current_user.id == @book.user.id %>
   <%= link_to "Edit", edit_book_path(@book) %> |
   <%= link_to "Destroy", @book, :confirm => 'Are you sure?', :method => :delete %> |
     <% end %>
         <% end %>
-  <%= link_to "View All", books_path %>
+  <%= link_to "View All", books_path %> <%= link_to 'Back', :back %>
 </p>
 

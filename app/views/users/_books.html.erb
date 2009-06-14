@@ -1,8 +1,9 @@
-<% if @current_user.id == @user.id %>
-<strong>My books</strong>
+<% if logged_in? && @current_user.id == @user.id %>
+    <strong>My books</strong>
 <% else %>
 <strong>Books added by <%= @user.name %></strong>
 <% end %>
+
 <% if @books and ! @books.empty? %>
 <table>
   <tr>

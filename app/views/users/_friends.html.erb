@@ -1,0 +1,19 @@
+<% if logged_in? && @current_user.id == @user.id %>
+<strong>My friends</strong>
+<% else %>
+<strong>Friends of <%= @user.name %></strong>
+<% end %>
+
+<ul>
+    <% for friendship in @user.friendships %>
+      <li>
+        <%= link_to friendship.friend.name, user_path(friendship.friend.id)  %>
+        <% if logged_in? %>
+        <% if @current_user.id == @user.id %>
+        (<%= link_to 'remove', friendship, :method => :delete %>)
+        <% end %>
+        <% end %>
+      </li>
+    <% end %>
+</ul>
+

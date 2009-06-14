@@ -19,15 +19,15 @@
 
       <div class='menu-bar' align=right>
         <%= link_to "Main", books_path %> |
-        <%= link_to "Users", users_path %> |
-            <%#= link_to "Signup", signup_users_path %>
+        <%= link_to "Users", users_path %>
+            <%#= | link_to "Signup", signup_users_path %>
         <%# end %>
       </div>
       <br />
         <div class='login_logout'>
             <% if @current_user %>
              Logged in as:
-             <%= @current_user.login %>
+             <%= link_to @current_user.login , user_path(@current_user)%>
              <em><%= link_to "(Logout)", session_path, :method => :delete %></em>
              <% else %>
               <em>Not logged in.</em>

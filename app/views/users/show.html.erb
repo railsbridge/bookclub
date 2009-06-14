@@ -28,8 +28,12 @@
 <p>
     <%= render :partial => 'books', :object => @books %>
 </p>
-
-
+<p>
+    <%= render :partial => 'friends' %>
+</p>
+<p>
+    <%= render :partial => 'friended' %>
+</p>
 <p>
     <% if logged_in? %>
         <% if @user.id == @current_user.id %>
@@ -38,6 +42,6 @@
     <% end %>
         <% end %>
 
-  <%= link_to "View All Users", users_path %>
+  <%= link_to "View All Users", users_path %> <%= link_to 'Back', :back %>
 </p>
 
