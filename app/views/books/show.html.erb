@@ -26,11 +26,15 @@
 </p>
 <p class="added_by">
   <strong>Added by:</strong>
-  <span><%=h @book.user.login %></span>
+  <span><%= link_to @book.user.login, user_path(@book.user_id) %></span>
 </p>
 <p>
+    <% if logged_in? %>
+        <% if @current_user.id == @book.user.id %>
   <%= link_to "Edit", edit_book_path(@book) %> |
   <%= link_to "Destroy", @book, :confirm => 'Are you sure?', :method => :delete %> |
+    <% end %>
+        <% end %>
   <%= link_to "View All", books_path %>
 </p>
 

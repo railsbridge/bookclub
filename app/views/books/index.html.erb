@@ -2,26 +2,28 @@
 
 <table>
   <tr>
-    <th>Added by</th>
+
     <th>Title</th>
     <th>Author</th>
     <th>Published Year</th>
     <th>Genre</th>
     <th>Isbn</th>
     <th>Description</th>
+    <th>Added by</th>
   </tr>
   <% for book in @books %>
     <tr>
-      <td><%=h book.user.login %></td>
-      <td><%=h book.title %></td>
+
+      <td><%= link_to book.title, book %></td>
       <td><%=h book.author %></td>
       <td><%=h book.published_year %></td>
       <td><%=h book.genre %></td>
       <td><%=h book.isbn %></td>
-      <td><%=h book.description %></td>
+      <td><%=h truncate (book.description, 30) %></td>
+      <td><%= link_to book.user.login, user_path(book.user_id) %></td>
 
       <td><%= link_to "Show", book %></td>
-        <% if @current_user%>
+        <% if logged_in? %>
           <% if @current_user.id == book.user.id %>
       <td><%= link_to "Edit", edit_book_path(book) %></td>
       <td><%= link_to "Destroy", book, :confirm => 'Are you sure?', :method => :delete %></td>

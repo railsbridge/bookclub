@@ -1,0 +1,35 @@
+<% if @current_user.id == @user.id %>
+<strong>My books</strong>
+<% else %>
+<strong>Books added by <%= @user.name %></strong>
+<% end %>
+<% if @books and ! @books.empty? %>
+<table>
+  <tr>
+
+    <th>Title</th>
+    <th>Author</th>
+    <th>Published Year</th>
+    <th>Genre</th>
+    <th>Isbn</th>
+    <th>Description</th>
+
+  </tr>
+
+  <% for book in @books %>
+    <tr>
+      <td><%= link_to book.title, book %></td>
+      <td><%=h book.author %></td>
+      <td><%=h book.published_year %></td>
+      <td><%=h book.genre %></td>
+      <td><%=h book.isbn %></td>
+      <td><%=h truncate (book.description, 30) %></td>
+     </tr>
+  <% end %>
+
+</table>
+<% else %>
+  <br /><br />
+  <em><strong>Looks like there are no books added by <%= @user.name %></strong></em>
+  <% end %>
+

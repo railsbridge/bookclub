@@ -2,22 +2,20 @@
 
 <table>
   <tr>
-    <th>Login</th>
-    <th>Password</th>
     <th>Name</th>
-    <th>Email</th>
     <th>Location</th>
   </tr>
   <% for user in @users %>
     <tr>
-      <td><%=h user.login %></td>
-      <td><%=h user.password %></td>
       <td><%=h user.name %></td>
-      <td><%=h user.email %></td>
       <td><%=h user.location %></td>
       <td><%= link_to "Show", user %></td>
+         <% if logged_in? %>
+           <% if @current_user.id == user.id %>
       <td><%= link_to "Edit", edit_user_path(user) %></td>
       <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+           <% end %>
     </tr>
   <% end %>
 </table>

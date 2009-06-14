@@ -1,5 +1,7 @@
 <h2> User </h2>
 
+<% if logged_in? %>
+        <% if @user.id == @current_user.id %>
 <p>
   <strong>Login:</strong>
   <%=h @user.login %>
@@ -9,12 +11,14 @@
   <%=h @user.password %>
 </p>
 <p>
-  <strong>Name:</strong>
-  <%=h @user.name %>
-</p>
-<p>
   <strong>Email:</strong>
   <%=h @user.email %>
+</p>
+<% end %>
+    <% end %>
+<p>
+  <strong>Name:</strong>
+  <%=h @user.name %>
 </p>
 <p>
   <strong>Location:</strong>
@@ -22,8 +26,18 @@
 </p>
 
 <p>
+    <%= render :partial => 'books', :object => @books %>
+</p>
+
+
+<p>
+    <% if logged_in? %>
+        <% if @user.id == @current_user.id %>
   <%= link_to "Edit", edit_user_path(@user) %> |
   <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", users_path %>
+    <% end %>
+        <% end %>
+
+  <%= link_to "View All Users", users_path %>
 </p>
 
