@@ -16,12 +16,15 @@
         <div class='flash' id='flash' <%= "style='display:none'" if flash[:notice].blank? %>>
         <%= flash[:notice] %>
         </div>
-
+    </div>
+        <div class='flash' id='error' <%= "style='display:none'" if flash[:error].blank? %>>
+        <%= flash[:error] %>
+        </div>
       <div class='menu-bar' align=right>
         <%= link_to "Main", books_path %> |
-        <%= link_to "Users", users_path %>
-            <%#= | link_to "Signup", signup_users_path %>
-        <%# end %>
+        <%= link_to "Users", users_path %> |
+        <%= link_to "Genres", genres_path %>
+
       </div>
       <br />
         <div class='login_logout'>

@@ -34,12 +34,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+
     @user = User.find(params[:id])
+    if @current_user == @user
     respond_to do |wants|
       wants.html
 
     end
-
+    else
+        flash[:error] = 'Cannot edit user.'
+        redirect_to :back
+    end
   end
 
   def update

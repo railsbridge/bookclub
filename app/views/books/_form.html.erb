@@ -13,8 +13,15 @@
     <%= f.text_field :published_year %>
   </p>
   <p>
-    <%= f.label :genre %><br />
-    <%= f.text_field :genre %>
+    <%= f.label :genre %>
+    <% if @genres && !@genres.empty? %>
+    <% for genre in @genres %>
+      <div>
+        <%= check_box_tag "book[genre_ids][]", genre.id, @book.genres.include?(genre) %>
+        <%= genre.name %>
+      </div>
+    <% end %>
+    <% end %>
   </p>
   <p>
     <%= f.label :isbn %><br />

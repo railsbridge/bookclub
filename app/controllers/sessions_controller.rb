@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
         end
     else
         render :action => 'new'
-        flash[:warning] = "Login failed"
+        flash[:error] = "Login failed"
     end
   end
 

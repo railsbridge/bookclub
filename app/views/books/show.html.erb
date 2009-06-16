@@ -14,7 +14,9 @@
 </p>
 <p>
   <strong>Genre:</strong>
-  <%=h @book.genre %>
+  <% if @genres && !@genres.empty? %>
+  <%=h @genres %>
+  <% end %>
 </p>
 <p>
   <strong>Isbn:</strong>

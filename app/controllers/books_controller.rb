@@ -4,14 +4,17 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+
   end
 
   def show
     @book = Book.find(params[:id])
+    @genres = @book.genres.map {|genre| genre.name}.compact.join(' , ')
   end
 
   def new
     @book = Book.new
+    @genres = Genre.all
     respond_to do |wants|
       wants.html
 
@@ -22,6 +25,7 @@ class BooksController < ApplicationController
   def create
 
     @book = Book.new(params[:book])
+    @genres = Genre.all
     @book = @current_user.books.build params[:book]
     respond_to do |wants|
       if @book.save
@@ -39,14 +43,21 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    respond_to do |wants|
-      wants.html
+    if @current_user.id == @book.user.id && @book.readers.length == 0
+        respond_to do |wants|
+            wants.html
 
+        end
+    else
+    flash[:error] = 'You cannot edit this book.'
+    redirect_to @book
     end
+
 
   end
 
   def update
+    params[:book][:genre_ids] ||= []
     @book = Book.find(params[:id])
     respond_to do |wants|
       if @book.update_attributes(params[:book])
@@ -65,9 +76,15 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
+    if @current_user.id == @book.user.id && @book.readers.length == 0
+    @book = Book.find(params[:id])
     @book.destroy
     flash[:notice] = "Successfully removed book."
     redirect_to books_url
+    else
+    flash[:error] = "Cannot remove book."
+    redirect_to books_url
+    end
   end
 end
 

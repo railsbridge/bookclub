@@ -7,7 +7,7 @@
 <ul>
     <% for user in @user.inverse_friends %>
       <li>
-        <%=h user.name %>
+        <%= link_to user.name, user %>
        </li>
     <% end %>
 </ul>
