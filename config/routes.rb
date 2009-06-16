@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :authors
+
   map.resources :genres
 
   map.resources :readings

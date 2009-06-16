@@ -1,0 +1,9 @@
+one:
+  name: MyString
+  country: MyString
+  website: MyString
+
+two:
+  name: MyString
+  country: MyString
+  website: MyString

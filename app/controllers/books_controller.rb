@@ -10,10 +10,12 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @genres = @book.genres.map {|genre| genre.name}.compact.join(' , ')
+    @authors = @book.authors.map {|author| author.name}.compact.join(' , ')
   end
 
   def new
     @book = Book.new
+    @authors = Author.all
     @genres = Genre.all
     respond_to do |wants|
       wants.html
@@ -23,9 +25,11 @@ class BooksController < ApplicationController
   end
 
   def create
-
+    params[:book][:author_ids] ||= []
+    params[:book][:genre_ids] ||= []
     @book = Book.new(params[:book])
     @genres = Genre.all
+    @authors = Author.all
     @book = @current_user.books.build params[:book]
     respond_to do |wants|
       if @book.save
@@ -43,6 +47,8 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @genres = Genre.all
+    @authors = Author.all
     if @current_user.id == @book.user.id && @book.readers.length == 0
         respond_to do |wants|
             wants.html
@@ -57,8 +63,10 @@ class BooksController < ApplicationController
   end
 
   def update
-    params[:book][:genre_ids] ||= []
+
     @book = Book.find(params[:id])
+    params[:book][:genre_ids] ||= []
+    params[:book][:author_ids] ||= []
     respond_to do |wants|
       if @book.update_attributes(params[:book])
 

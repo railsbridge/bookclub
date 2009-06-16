@@ -1,0 +1,24 @@
+<h2> Author </h2>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @author.name %>
+</p>
+<p>
+  <strong>Country:</strong>
+  <%=h @author.country %>
+</p>
+<p>
+  <strong>Website:</strong>
+  <%= auto_link @author.website %>
+</p>
+<p>
+    <%= render :partial => 'books', :object => @books %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_author_path(@author) %> |
+  <%= link_to "Destroy", @author, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", authors_path %>
+</p>
+

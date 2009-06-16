@@ -6,7 +6,9 @@
 </p>
 <p>
   <strong>Author:</strong>
-  <%=h @book.author %>
+  <% if @authors && !@authors.empty? %>
+  <%=h @authors %>
+  <% end %>
 </p>
 <p>
   <strong>Published Year:</strong>

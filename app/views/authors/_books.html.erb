@@ -1,0 +1,9 @@
+  <strong>Books:</strong>
+    <% if @books && !@books.empty?%>
+    <ol>
+        <% @books.each do |book|%>
+        <li><%= book.title %></li>
+        <% end %>
+    </ol>
+    <% end %>
+

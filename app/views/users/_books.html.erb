@@ -20,9 +20,9 @@
   <% for book in @books %>
     <tr>
       <td><%= link_to book.title, book %></td>
-      <td><%=h book.author %></td>
+      <td><%=h book.authors.map {|author| author.name}.compact.join(' , ') %></td>
       <td><%=h book.published_year %></td>
-      <td><%=h book.genre %></td>
+      <td><%=h book.genres.map {|genre| genre.name}.compact.join(' , ') %></td>
       <td><%=h book.isbn %></td>
       <td><%=h truncate (book.description, 30) %></td>
      </tr>

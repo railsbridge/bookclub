@@ -6,7 +6,14 @@
   </p>
   <p>
     <%= f.label :author %><br />
-    <%= f.text_field :author %>
+    <% if @authors && !@authors.empty? %>
+    <% for author in @authors %>
+      <div>
+        <%= check_box_tag "book[author_ids][]", author.id, @book.authors.include?(author) %>
+        <%= author.name %>
+      </div>
+    <% end %>
+    <% end %>
   </p>
   <p>
     <%= f.label :published_year %><br />
