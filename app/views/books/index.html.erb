@@ -19,14 +19,14 @@
       <td><%=h book.published_year %></td>
       <td><%=h book.genre %></td>
       <td><%=h book.isbn %></td>
-      <td><%=h truncate (book.description, 30) %></td>
+      <td><%=h truncate(book.description.to_s, 30) %></td>
       <td><%= link_to book.user.login, user_path(book.user_id) %></td>
 
       <td><%= link_to "Show", book %></td>
         <% if logged_in? %>
           <% if @current_user.id == book.user.id %>
-      <td><%= link_to "Edit", edit_book_path(book) %></td>
-      <td><%= link_to "Destroy", book, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><em><%= link_to "Edit", edit_book_path(book) %></em></td>
+      <td><em><%= link_to "Destroy", book, :confirm => 'Are you sure?', :method => :delete %></em></td>
             <% end %>
            <% end %>
     </tr>

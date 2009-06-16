@@ -35,6 +35,9 @@
     <%= render :partial => 'friended' %>
 </p>
 <p>
+    <%= render :partial => 'read' %>
+</p>
+<p>
     <% if logged_in? %>
         <% if @user.id == @current_user.id %>
   <%= link_to "Edit", edit_user_path(@user) %> |

@@ -46,5 +46,9 @@ class ActiveSupport::TestCase
    def put_with_user(action, parameters = nil, session = nil, flash = nil)
     put action, parameters, :user_id => users(:nick).id
   end
+
+  def delete_with_user(action, parameters = nil, session = nil, flash = nil)
+    delete action, parameters, :user_id => users(:nick).id
+  end
 end
 

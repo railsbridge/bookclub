@@ -31,7 +31,11 @@
     <% if @book.user != @current_user && !@current_user.friends.include?(@book.user)%>
   <%= link_to 'Add friend', friendships_path(:friend_id => @book.user_id), :method => :post %>
     <% end %>
-
+</p>
+<p>
+    <% if !@current_user.reads.include?(@book)%>
+  <%= link_to 'I have read it', readings_path(:read_id => @book.id), :method => :post %>
+    <% end %>
 </p>
 <p>
 

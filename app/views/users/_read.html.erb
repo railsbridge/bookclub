@@ -1,0 +1,19 @@
+<% if logged_in? && @current_user.id == @user.id %>
+<strong>I have read</strong>
+<% else %>
+<strong><%= @user.name %> has read</strong>
+<% end %>
+
+<ul>
+    <% for reading in @user.readings %>
+      <li>
+        <%= link_to reading.read.title, book_path(reading.read.id)  %>
+        <% if logged_in? %>
+        <% if @current_user.id == @user.id %>
+        (<%= link_to 'remove', reading, :method => :delete %>)
+        <% end %>
+        <% end %>
+      </li>
+    <% end %>
+</ul>
+

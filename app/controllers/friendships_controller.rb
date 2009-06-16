@@ -6,7 +6,6 @@ class FriendshipsController < ApplicationController
         wants.html do
           flash[:notice] = "Successfully added friend."
           redirect_to :back
-
         end
 
       else
