@@ -47,7 +47,7 @@ class BooksControllerTest < ActionController::TestCase
 
   def test_destroy
     book = Book.first
-    delete :destroy, :id => book
+    delete_with_user :destroy, :id => book
     assert_redirected_to books_url
     assert !Book.exists?(book.id)
   end
@@ -82,9 +82,7 @@ class BooksControllerTest < ActionController::TestCase
   test 'should store user with book' do
     post_with_user :create, :book => {
         :title => 'How to read',
-        :author => 'Kventin Smith',
         :published_year => '1981',
-        :genre => 'Education',
         :isbn => '123456788',
         :description => 'Great book about books'
     }

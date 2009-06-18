@@ -1,9 +1,10 @@
 one:
-  name: MyString
-  country: MyString
-  website: MyString
+  name: Great
+  country: Plain
+  website: www.mysite.com
 
 two:
   name: MyString
   country: MyString
   website: MyString
+

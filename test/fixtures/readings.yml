@@ -1,7 +1,8 @@
 one:
-  user_id: 1
+  reader_id: 1
   read_id: 1
 
 two:
-  user_id: 1
+  reader_id: 1
   read_id: 1
+

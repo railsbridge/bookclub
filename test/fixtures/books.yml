@@ -3,18 +3,14 @@
 one:
   user: nick
   title: How to read
-  author: Kventin Smith
   published_year: 1981
-  genre: Education
   isbn: 1234567
   description: Great book about books
 
 two:
   user: nick
   title: My first bestseller
-  author: Marta Write
   published_year: 2002
-  genre: Sci-fi
   isbn: 876543
   description: First book of young sci-fi writer
 

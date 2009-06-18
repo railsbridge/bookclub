@@ -34,7 +34,7 @@ class SessionsControllerTest < ActionController::TestCase
     assert_not_nil session[:user_id]
 
     delete :destroy
-    #assert_response 302
+    assert_response :redirect
     assert_redirected_to '/books'
     assert_nil assigns(:current_user)
     assert_nil session[:user_id]

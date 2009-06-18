@@ -25,8 +25,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    params[:book][:author_ids] ||= []
-    params[:book][:genre_ids] ||= []
+
     @book = Book.new(params[:book])
     @genres = Genre.all
     @authors = Author.all
