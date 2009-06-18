@@ -1,5 +1,14 @@
 <h2> Books </h2>
 
+<% form_tag books_path, :method => 'get'  do  %>
+<p>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag 'Search', :name => nil %>
+</p>
+<% end %>
+
+<div id='books'>
+<% if @books.size > 0 -%>
 <table>
   <tr>
 
@@ -12,27 +21,15 @@
     <th>Added by</th>
     <th>Number of readers</th>
   </tr>
-  <% for book in @books %>
-    <tr>
 
-      <td><%= link_to book.title, book %></td>
-      <td><%=h book.authors.map {|author| author.name}.compact.join(' , ') %></td>
-      <td><%=h book.published_year %></td>
-      <td><%=h book.genres.map {|genre| genre.name}.compact.join(' , ') %></td>
-      <td><%=h book.isbn %></td>
-      <td><%=h truncate(book.description.to_s, 30) %></td>
-      <td><%= link_to book.user.login, user_path(book.user_id) %></td>
-      <td><%= book.readers.length %></td>
-      <td><%= link_to "Show", book %></td>
-        <% if logged_in? %>
-          <% if @current_user.id == book.user.id %>
-      <td><em><%= link_to "Edit", edit_book_path(book) %></em></td>
-      <td><em><%= link_to "Destroy", book, :confirm => 'Are you sure?', :method => :delete %></em></td>
-            <% end %>
-           <% end %>
-    </tr>
-  <% end %>
+<%= render :partial => 'book', :collection => @books %>
+
 </table>
+
+<% else %>
+<%= render :text => "No results found" %>
+<% end -%>
+</div>
 
 <p><%= link_to "New Book", new_book_path %></p>
 

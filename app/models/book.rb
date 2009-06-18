@@ -46,5 +46,14 @@ def save_assigned_authors
         self.manuscripts.create(:author_id => id) unless manuscripts.any? {|d| d.author_id == id}
     end
 end
+
+def self.search(search)
+    if search
+        find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+    else
+        find(:all)
+    end
+end
+
 end
 

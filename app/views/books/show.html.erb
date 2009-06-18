@@ -7,7 +7,7 @@
 <p>
   <strong>Author:</strong>
   <% if @authors && !@authors.empty? %>
-  <%=h @authors %>
+  <%= @authors.map {|author| link_to author.name, author}.compact.join(' , ') %>
   <% end %>
 </p>
 <p>

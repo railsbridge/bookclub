@@ -3,14 +3,14 @@ class BooksController < ApplicationController
     before_filter :login_required, :only => ["new", "create", "edit", "update"]
 
   def index
-    @books = Book.all
-
+    #@books = Book.all
+    @books = Book.search(params[:search])
   end
 
   def show
     @book = Book.find(params[:id])
     @genres = @book.genres.map {|genre| genre.name}.compact.join(' , ')
-    @authors = @book.authors.map {|author| author.name}.compact.join(' , ')
+    @authors = @book.authors
   end
 
   def new
@@ -93,5 +93,8 @@ class BooksController < ApplicationController
     redirect_to books_url
     end
   end
+
+
+
 end
 

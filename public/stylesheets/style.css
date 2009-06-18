@@ -139,3 +139,15 @@ a.button, .button {
     font-size: smaller;
 }
 
+.tags_genres {
+    float: right;
+    color: green;
+}
+.tags_genres a {
+    color: #00CC99;
+}
+
+.tags_genres a:hover {
+    background: #FF9933;
+}
+

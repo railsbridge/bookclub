@@ -1,5 +1,10 @@
 <h2> Genres </h2>
 
+<div class='tags_genres'>
+<h3>Popular genres</h3>
+<%= cloud(Genre.find(:all, :limit => 10)) %>
+</div>
+
 <table>
   <tr>
     <th>Name</th>
@@ -13,6 +18,8 @@
     </tr>
   <% end %>
 </table>
+
+
 
 <p><%= link_to "New Genre", new_genre_path %></p>
 
