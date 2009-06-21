@@ -1,6 +1,7 @@
 body {
-	/*background: #DDDDDD; */
-    background-color:#BEDB39;
+	/*background: #DDDDDD;*/
+    /*background-color:#BEDB39;*/
+
 	width: 960px;
 	color: #000000;
 	margin: 0px auto 0px;
@@ -161,16 +162,34 @@ a.button, .button {
 
 #books {
     float: left;
-
 }
-
-
 
 #footer {
     clear: both;
     padding: 10px;
     background: #FD7400;
     border-bottom: 2px solid #ddd;
+
+}
+
+td {
+    padding: 5px 8px;
+    border: 1px solid #999;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 5px 0 10px;
+}
+#logo {
+    align: right;
+}
+
+th {
+ text-align: left;
+ padding: 5px 8px;
+ border: 1px solid #999;
+ background: #999;
 
 }
 
