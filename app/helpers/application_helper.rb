@@ -9,7 +9,7 @@ def cloud(genres)
     genres.each do |g|
       size = 100 * g.books.count / mid
       size = 75 if size < 75
-      output << link_to(g.name, {:controller => "genre", :action => "show", :id => g}, :style => "font-size: #{size}%") << " "
+      output << link_to(g.name, {:controller => "genres", :action => "show", :id => g}, :style => "font-size: #{size}%") << " "
     end
 
     return output

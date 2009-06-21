@@ -1,35 +1,38 @@
 <h2> Books </h2>
 
-<% form_tag books_path, :method => 'get'  do  %>
-<p>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag 'Search', :name => nil %>
-</p>
-<% end %>
 
-<div id='books'>
-<% if @books.size > 0 -%>
-<table>
-  <tr>
 
-    <th>Title</th>
-    <th>Author</th>
-    <th>Published Year</th>
-    <th>Genre</th>
-    <th>Isbn</th>
-    <th>Description</th>
-    <th>Added by</th>
-    <th>Number of readers</th>
-  </tr>
+    <div id='books'>
 
-<%= render :partial => 'book', :collection => @books %>
+    <% form_tag books_path, :method => 'get'  do  %>
+        <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', :name => nil %>
+        </p>
+    <% end %>
 
-</table>
+    <% if @books.size > 0 -%>
+        <table>
+            <tr>
 
-<% else %>
-<%= render :text => "No results found" %>
-<% end -%>
-</div>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Published Year</th>
+                <th>Genre</th>
+                <th>Isbn</th>
+                <th>Description</th>
+                <th>Added by</th>
+                <th>Number of readers</th>
+            </tr>
+
+     <%= render :partial => 'book', :collection => @books %>
+
+    </table>
+
+    <% else %>
+    <%= render :text => "No results found" %>
+    <% end %>
+    </div>
 
 <p><%= link_to "New Book", new_book_path %></p>
 

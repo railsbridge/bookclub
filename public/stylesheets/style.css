@@ -1,5 +1,6 @@
 body {
-	background: #DDDDDD;
+	/*background: #DDDDDD; */
+    background-color:#BEDB39;
 	width: 960px;
 	color: #000000;
 	margin: 0px auto 0px;
@@ -133,10 +134,10 @@ a.button, .button {
   list-style: disc;
 }
 
-.login_logout {
+.sidebar {
     float: right;
     color: #999;
-    font-size: smaller;
+    font-size: 14px;
 }
 
 .tags_genres {
@@ -144,10 +145,32 @@ a.button, .button {
     color: green;
 }
 .tags_genres a {
-    color: #00CC99;
+    color: #004358;
+    text-decoration: none;
 }
 
 .tags_genres a:hover {
     background: #FF9933;
+}
+
+#nav {
+    float: right;
+    font-family: serif;
+
+}
+
+#books {
+    float: left;
+
+}
+
+
+
+#footer {
+    clear: both;
+    padding: 10px;
+    background: #FD7400;
+    border-bottom: 2px solid #ddd;
+
 }
 

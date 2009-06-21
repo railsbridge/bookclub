@@ -7,27 +7,28 @@
     <%= javascript_include_tag :defaults %>
 
   </head>
-  <body>
+ <body>
 
-    <div class='content'>
-      <div class='title-bar'>
+  <div class='site'>
+      <div id='logo'>
         <%= link_to image_tag("bookclub.png", :alt => "logo"), books_path %>
       </div>
         <div class='flash' id='flash' <%= "style='display:none'" if flash[:notice].blank? %>>
         <%= flash[:notice] %>
         </div>
-    </div>
         <div class='flash' id='error' <%= "style='display:none'" if flash[:error].blank? %>>
         <%= flash[:error] %>
         </div>
-      <div class='menu-bar' align=right>
+
+      <div id="nav">
         <%= link_to "Main", books_path %> |
         <%= link_to "Users", users_path %> |
         <%= link_to "Genres", genres_path %> |
         <%= link_to "Authors", authors_path %>
       </div>
-      <br />
-        <div class='login_logout'>
+        <br /><br />
+
+      <div class='sidebar'>
             <% if @current_user %>
              Logged in as:
              <%= link_to @current_user.login , user_path(@current_user)%>
@@ -37,12 +38,15 @@
               <%= link_to 'Login', new_session_path %>
               <em>or <%= link_to 'Signup', new_user_path %></em>
               <% end %>
-        </div>
-        <br /><br />
+       </div>
+        <br />
       <%= yield %>
       <br /><br />
 
-    </div>
-  </body>
+        <div id='footer'>
+        And footer for all
+        </div>
+ </div>
+ </body>
 </html>
 
