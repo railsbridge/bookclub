@@ -65,9 +65,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    if @user.books.length == 0
     @user.destroy
     flash[:notice] = "Successfully removed user."
     redirect_to users_url
+    else
+    flash[:error] = "Cannot remove user."
+    redirect_to :back
+    end
   end
 end
 

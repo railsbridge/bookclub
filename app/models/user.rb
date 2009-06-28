@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     has_many :readings , :foreign_key => 'reader_id'
     has_many :reads, :through => :readings
 
+    has_many :reviews
 validates_presence_of :login, :password, :name, :email, :location
 validates_uniqueness_of :login
 validates_format_of :email, :with => %r{.+@.+\..+},:message => "must be a valid email address"

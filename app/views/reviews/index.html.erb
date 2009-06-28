@@ -1,0 +1,26 @@
+<h2> Reviews </h2>
+
+<table>
+  <tr>
+    <th>Book</th>
+    <th>User</th>
+    <th>Review</th>
+    <th>Rating</th>
+  </tr>
+  <% for review in @reviews %>
+    <tr>
+      <td><%=h review.book.title %></td>
+      <td><%=h review.user.name %></td>
+      <td><%=h review.review %></td>
+      <td><%=h review.rating %></td>
+      <td><%= link_to "Show", review %></td>
+        <% if logged_in? %>
+        <% if @current_user == review.user.id %>
+      <td><%= link_to "Edit", edit_review_path(review) %></td>
+      <td><%= link_to "Destroy", review, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+        <% end %>
+    </tr>
+  <% end %>
+</table>
+

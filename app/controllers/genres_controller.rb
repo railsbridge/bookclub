@@ -27,7 +27,7 @@ class GenresController < ApplicationController
 
       else
         wants.html { render :action => 'new' }
-
+        wants.js
       end
     end
   end

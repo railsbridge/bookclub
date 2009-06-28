@@ -1,10 +1,10 @@
 <h2> Genre </h2>
-
+<div id="new">
 <p>
   <strong>Name:</strong>
   <%=h @genre.name %>
 </p>
-
+<div>
 <p>
   <%= link_to "Edit", edit_genre_path(@genre) %> |
   <%= link_to "Destroy", @genre, :confirm => 'Are you sure?', :method => :delete %> |

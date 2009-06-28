@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :reviews
+
   map.resources :manuscripts
 
   map.resources :categories

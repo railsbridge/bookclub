@@ -10,11 +10,13 @@
     <th>Name</th>
   </tr>
   <% for genre in @genres %>
-    <tr>
+    <tr id="genre">
       <td><%=h genre.name %></td>
       <td><%= link_to "Show", genre %></td>
+        <% if logged_in? %>
       <td><%= link_to "Edit", edit_genre_path(genre) %></td>
       <td><%= link_to "Destroy", genre, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
     </tr>
   <% end %>
 </table>

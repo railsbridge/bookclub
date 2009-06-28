@@ -10,6 +10,7 @@ class Book < ActiveRecord::Base
   has_many :readings , :foreign_key => 'read_id'
   has_many :readers, :through => :readings
 
+  has_many :reviews
   validates_presence_of :title, :published_year, :isbn
   validates_uniqueness_of :isbn
   validates_numericality_of :published_year, :only_integer => true

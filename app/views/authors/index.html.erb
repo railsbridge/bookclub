@@ -12,8 +12,10 @@
       <td><%=h author.country %></td>
       <td><%= auto_link (author.website)%></td>
       <td><%= link_to "Show", author %></td>
+        <% if logged_in? %>
       <td><%= link_to "Edit", edit_author_path(author) %></td>
       <td><%= link_to "Destroy", author, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
     </tr>
   <% end %>
 </table>

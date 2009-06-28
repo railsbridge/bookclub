@@ -1,0 +1,12 @@
+one:
+  book_id: 1
+  user_id: 1
+  review: Text of review
+  rating: 10
+
+two:
+  book_id: 1
+  user_id: 1
+  review: MyText
+  rating: 1
+
