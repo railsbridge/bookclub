@@ -1,6 +1,5 @@
 <h2> Review </h2>
 
-
 <p>
   <strong>Review:</strong>
   <%=h @review.review %>
@@ -18,9 +17,11 @@
   <%=h @review.user.name %>
 </p>
 <p>
+    <% if @current_user.id == @review.user.id &&  @review.created_at > 1.hour.ago  %>
 
   <%= link_to "Edit", edit_review_path(@review) %> |
   <%= link_to "Destroy", @review, :confirm => 'Are you sure?', :method => :delete %> |
+    <% end %>
   <%= link_to "View All", reviews_path %>
 </p>
 

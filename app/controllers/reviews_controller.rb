@@ -8,14 +8,17 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    if @current_user.reviews.length < 2
     @review = Review.new(:book_id => params[:book_id])
 
 
     respond_to do |wants|
       wants.html
-
     end
-
+    else
+        redirect_to root_path
+        flash[:notice] = 'You have already wrote a review'
+    end
   end
 
   def create
@@ -38,11 +41,14 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    respond_to do |wants|
-      wants.html
-
+    if @current_user.id == @review.user.id && @review.created_at > 1.hour.ago
+        respond_to do |wants|
+         wants.html
+        end
+    else
+        redirect_to root_path
+        flash[:notice] = 'You cannot edit review'
     end
-
   end
 
   def update
@@ -69,5 +75,6 @@ class ReviewsController < ApplicationController
     flash[:notice] = "Successfully removed review."
     redirect_to reviews_url
   end
+
 end
 
