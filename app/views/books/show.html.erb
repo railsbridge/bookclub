@@ -24,14 +24,21 @@
   <strong>Isbn:</strong>
   <%=h @book.isbn %>
 </p>
+
 <p>
   <strong>Description:</strong>
   <%=h @book.description %>
+</p>
+<p>
+  <strong>Description:</strong>
+
+  <%= link_to @book.reviews.length.to_s, reviews_path(:search => @book.id, :target => '_blank', :layout => false) %>
 </p>
 <p class="added_by">
   <strong>Added by:</strong>
   <span><%= link_to @book.user.login, user_path(@book.user_id) %></span>
     <% if logged_in? %>
+
     <% if @book.user != @current_user && !@current_user.friends.include?(@book.user)%>
   <%= link_to 'Add friend', friendships_path(:friend_id => @book.user_id), :method => :post %>
     <% end %>

@@ -1,7 +1,14 @@
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
+
   end
+
+    def list
+    @reviews = Review.all
+        #@reviews = Review.search(params[:search])
+        #render :action => 'list', :layout => false
+    end
 
   def show
     @review = Review.find(params[:id])

@@ -5,7 +5,7 @@
       <td><%=h book.published_year %></td>
       <td><%=h book.genres.map {|genre| genre.name}.compact.join(' , ') %></td>
       <td><%=h book.isbn %></td>
-      <td><%=h truncate(book.description.to_s, 30) %></td>
+      <td><%=h book.description.to_s[0..30] %></td>
       <td><%= link_to book.user.login, user_path(book.user_id) %></td>
       <td><%= book.readers.length %></td>
       <td><%= link_to "Show", book %></td>

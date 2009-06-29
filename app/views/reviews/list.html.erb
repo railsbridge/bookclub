@@ -1,0 +1,20 @@
+<h2> Reviews </h2>
+
+<table>
+  <tr>
+    <th>Book</th>
+    <th>User</th>
+    <th>Review</th>
+    <th>Rating</th>
+  </tr>
+  <% for review in @reviews %>
+    <tr>
+      <td><%=h review.book.title %></td>
+      <td><%=h review.user.name %></td>
+      <td><%=h review.review %></td>
+      <td><%=h review.rating %></td>
+
+    </tr>
+  <% end %>
+</table>
+
